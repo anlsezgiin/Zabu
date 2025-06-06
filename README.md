@@ -1,7 +1,3 @@
-Aynen, işte istediğin şekilde **tam markdown formatında, kopyala-yapıştır** edilebilir `README.md` içeriği:
-
----
-
 ````markdown
 # 🧠 Zabu – AI-Powered Tweet Sentiment Analyzer with Google Sheets Integration
 
