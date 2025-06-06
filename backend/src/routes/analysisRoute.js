@@ -1,9 +1,8 @@
-import  express  from "express";
+import express from 'express';
+import { handleTweetAnalysis } from '../controllers/analysisController.js';
 
 const router = express.Router();
 
-router.post("/",(req,res) => {
-    res.send("anylsisden selamlar");
-});
+router.post('/', handleTweetAnalysis);
 
 export default router;

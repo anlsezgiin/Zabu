@@ -4,6 +4,8 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import linkRoutes from './src/routes/link.js';
 import analysisRoute from './src/routes/analysisRoute.js';
+import dataRoute from './src/routes/dataRoute.js';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -19,16 +21,15 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 1000 * 60 * 60 * 24 }
 }));
+app.use(cors({
+  origin: 'http://localhost:5173', // frontend’in çalıştığı port!
+  credentials: true
+}));
 
 // Routes
 app.use('/postLink', linkRoutes);
 app.use('/analysis', analysisRoute);
-
-// Test
-app.get('/ping', (req, res) => {
-  res.send('Zabu server is alive! 🐾');
-});
-
+app.use('/getData', dataRoute);
 
 app.listen(PORT, () => {
   console.log(`🚀 Zabu backend running at http://localhost:${PORT}`);

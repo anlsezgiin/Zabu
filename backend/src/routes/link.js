@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
   }
 
   req.session.sheetId = spreadsheetId;
-  res.status(200).json({ message: 'Correct sheets link.', sheetId: spreadsheetId });
+  res.status(200).json({ message: 'Correct sheets link.', succes: "true", sheetId: spreadsheetId });
 });
 
 function extractSheetId(link) {
