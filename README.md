@@ -1,5 +1,5 @@
 ````markdown
-# 🧠 Zabu – AI-Powered Tweet Sentiment Analyzer with Google Sheets Integration
+🧠 Zabu – AI-Powered Tweet Sentiment Analyzer with Google Sheets Integration
 
 Zabu is a full-stack web application that analyzes the sentiment of tweets using Hugging Face's `twitter-roberta-base-sentiment` model and stores the results into a Google Sheet in real time.
 
@@ -11,7 +11,7 @@ Built with:
 
 ---
 
-## ✨ Features
+✨ Features
 
 - Login with a public Google Sheets link
 - Analyze individual tweets by pasting a tweet URL
@@ -21,7 +21,7 @@ Built with:
 
 ---
 
-## ⚙️ Requirements
+⚙️ Requirements
 
 - Node.js (v18+ recommended)
 - A Google Cloud Project with Sheets API enabled
@@ -30,9 +30,9 @@ Built with:
 
 ---
 
-## 🚀 Installation & Dev Mode Setup
+🚀 Installation & Dev Mode Setup
 
-### 1. Clone the repository
+1. Clone the repository
 
 ```bash
 git clone https://github.com/your-username/zabu.git
