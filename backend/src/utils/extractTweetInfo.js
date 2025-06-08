@@ -6,7 +6,7 @@ import path from 'path';
 dotenv.config();
 
 export async function extractTweetInfo(tweetLink) {
-    const MOCK_MODE = false; // dev mode for mocking data
+    const MOCK_MODE = true; // dev mode for mocking data
     if (MOCK_MODE) {
     console.log('MOCK MODE: extractTweetInfo returning mock data');
     const filePath = path.resolve('./mock/tweetMock.json');

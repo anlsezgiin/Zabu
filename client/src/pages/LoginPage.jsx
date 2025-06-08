@@ -30,24 +30,30 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center text-gray-700">Zabu 🧠</h1>
-        <input
-          type="text"
-          value={sheetLink}
-          onChange={(e) => setSheetLink(e.target.value)}
-          placeholder="Google Sheets link..."
-          className="w-full p-3 border border-gray-300 rounded-lg mb-4 bg-white text-gray-800 placeholder-gray-500"
-        />
-        <button
-          onClick={handleLogin}
-          className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
-        >
-          Start
-        </button>
-        {error && <p className="text-red-500 text-sm mt-3 text-center">{error}</p>}
-      </div>
-    </div>
+  <div className="h-screen w-screen flex items-center justify-center bg-slate-100">
+  <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+    <h1 className="text-2xl font-bold mb-2 text-center text-gray-700">Zabu 🧠</h1>
+    <p className='text-gray-800 flex justify-center items-center pb-4 text-center'>Welcome to tweet analyzer! But first, need sheets link to save analysis.</p>
+    <input
+      type="text"
+      value={sheetLink}
+      onChange={(e) => setSheetLink(e.target.value)}
+      placeholder="Google Sheets link..."
+      className="w-full p-3 border border-gray-300 rounded-lg mb-4 bg-white text-gray-800 placeholder-gray-500"
+    />
+
+    <button
+      onClick={handleLogin}
+      className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+    >
+      Start
+    </button>
+
+    {error && (
+      <p className="text-red-500 text-sm mt-3 text-center">{error}</p>
+    )}
+  </div>
+</div>
+
   );
 }
