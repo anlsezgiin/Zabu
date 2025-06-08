@@ -1,5 +1,6 @@
 # 🧠 Zabu – AI-Powered Tweet Sentiment Analyzer with Google Sheets Integration
-![image](https://github.com/user-attachments/assets/d846f3df-a379-4eb5-b1a5-db8d0fab0165)
+![image](https://github.com/user-attachments/assets/8e0a2548-baf3-4eb4-92bd-d16c9c6a90c2)
+
 
 Zabu is a full-stack web application that analyzes the sentiment of tweets using Hugging Face's `twitter-roberta-base-sentiment` model and stores the results into a Google Sheet in real time.
 
