@@ -1,112 +1,106 @@
-# 🧠 Zabu – AI-Powered Tweet Sentiment Analyzer with Google Sheets Integration
+# Tweet Sentiment Analysis with Google Sheets Integration
 
-Zabu is a full-stack web application that analyzes the sentiment of tweets using Hugging Face's `twitter-roberta-base-sentiment` model and stores the results into a Google Sheet in real time.
+## Overview
 
-Built with:
+This project allows users to analyze the sentiment of tweets and store the results in Google Sheets. The sentiment can be classified as **positive**, **neutral**, or **negative**.
 
-- 🔥 Node.js + Express (Backend)
-- ⚛️ React + Vite (Frontend)
-- 🧠 Hugging Face API for AI sentiment analysis
-- 📊 Google Sheets API for data storage
+The application currently works with mock data, but it is designed to integrate with the X (Twitter) API once proper configuration and billing are enabled. For sentiment analysis, it leverages a Hugging Face machine learning model.
 
----
-
-## ✨ Features
-
-- Login with a public Google Sheets link  
-- Analyze individual tweets by pasting a tweet URL  
-- Save sentiment result (Positive / Neutral / Negative) + AI summary + date to Google Sheets  
-- View logs via backend console  
-- Frontend-ready but **Tweet list component is currently disabled (WIP)**
+The frontend is built using **React** with **Vite** for a fast development and build experience.
 
 ---
 
-## ⚙️ Requirements
+## How It Works
 
-- Node.js (v18+ recommended)  
-- A Google Cloud Project with Sheets API enabled  
-- A Google Sheets document (shared with service account)  
-- Hugging Face account with an inference token  
+1. **Google Sheets Setup**
 
----
+   * The user provides a Google Sheets link with **edit access enabled**.
+   * The sentiment analysis results will be written directly into this sheet.
 
-## 🚀 Installation & Dev Mode Setup
+2. **Tweet Input**
 
-### 1. Clone the repository
+   * On the tweet analysis screen, the user enters the link of the tweet to be analyzed.
+   * For now, the application runs in **mock mode**. In the code, this is controlled inside `extractTweetInfo` with the `MOCK_MODE` flag.
 
-```bash
-git clone https://github.com/your-username/zabu.git
-cd zabu
-```
+3. **Sentiment Analysis**
 
----
+   * The system sends the tweet text to the Hugging Face API for sentiment classification.
+   * It uses the following model:
 
-### 2. Backend Setup
-
-```bash
-cd backend
-npm install
-```
-
-#### 🔐 .env Configuration
-
-Inside `backend/.env`, create the following:
-
-```env
-PORT=3000
-HF_API_TOKEN=your_huggingface_api_token
-SESSION_SECRET=some_random_secret
-```
+     ```
+     https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment
+     ```
+   * The result is shown in the React frontend and recorded into the provided Google Sheet.
 
 ---
 
-#### 🔑 Google Sheets Service Account Configuration
+## Requirements
 
-1. Go to [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a **Service Account** and enable the **Google Sheets API**.
-3. Generate a **`key.json`** file.
-4. Place it under:
-
-```
-backend/credentials/key.json
-```
-
-5. Copy the **service account email** (e.g. `zabu-sheets@project-id.iam.gserviceaccount.com`)  
-6. Share your **Google Sheet document** with that email (Editor access required)
+* Node.js (latest stable version recommended)
+* React with Vite (frontend)
+* Google Sheets link with edit access enabled
+* Hugging Face API access (required for live sentiment analysis)
+* X (Twitter) API access and billing (required for live tweet data)
 
 ---
 
-### 3. Start the Backend
+## Configuration
 
-```bash
-npm run dev
-```
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/anlsezgiin/Zabu.git
+   cd Zabu
+   ```
+2. Install dependencies:
+
+   ```bash
+   cd client
+   npm install
+   cd ..
+   cd backend
+   npm install
+   ```
+3. Create a `.env` file in the project root and add the following values:
+
+   ```
+   PORT=
+   GOOGLE_SHEETS_CLIENT_EMAIL=
+   GOOGLE_SHEETS_PRIVATE_KEY=
+   AI_API_URL=
+   AI_API_TOKEN= 
+   TWITTER_BEARER_TOKEN=
+   HF_API_TOKEN=
+   ```
+4. To run with mock data, ensure `MOCK_MODE` is set to `true` in `extractTweetInfo`.
+   To run with live data, set it to `false` and configure the `.env` file with your Hugging Face and X API credentials.
 
 ---
 
-### 4. Frontend Setup
+## Usage
 
-```bash
-cd ../client
-npm install
-npm run dev
-```
+1. Run the frontend server:
 
-Frontend will run at: [http://localhost:5173](http://localhost:5173)
+   ```bash
+   npm run dev
+   ```
+2. Run the backend server:   
+    ```bash
+   node index.js
+   ```
+
+3. Open the application in your browser at:
+
+   ```
+   http://localhost:5173
+   ```
+4. Enter the Google Sheets link.
+5. Enter the tweet link in the analysis screen.
+6. View the sentiment result in the application and check the corresponding entry in your Google Sheet.
 
 ---
 
-## 🧪 Development Mode
+## Project Goal
 
-- Frontend: `http://localhost:5173`  
-- Backend: `http://localhost:3000`  
-- CORS enabled with `credentials: true`  
-- Sessions are stored via cookies
+The main purpose of this application is to classify the sentiment of a tweet as **positive, neutral, or negative** using the Hugging Face model and persist this information in a Google Sheet for further tracking or analysis.
 
----
-
-## ⚠️ Notes
-
-- ✅ Tweet analysis and Google Sheets saving works as expected  
-- 🚧 Tweet list component (`TweetList.jsx`) is currently disabled and under construction  
-- 🔐 Make sure your `.env` and `key.json` files are configured properly before running  
